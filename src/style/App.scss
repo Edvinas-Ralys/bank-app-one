@@ -1,0 +1,17 @@
+//styles
+
+body{
+    display: flex;
+    justify-content: center;
+}
+#root{
+    width: 80vw;
+    border: 2px solid black;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.save-button{
+    padding: 5px;
+    font-size: 15px;
+}

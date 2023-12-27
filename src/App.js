@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./style/reset.scss";
+import "./style/App.scss";
+import "./style/button.scss";
+import ClientForm from "./components/ClientForm";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import ClientList from "./components/ClientList";
 
 function App() {
+  const [clientForm, setClientForm] = useState(false);
+  const addClient = () => {
+    setClientForm(!clientForm);
+  };
+
+  const [clients, setClients] = useState([]);
+  const checkClients = () => {
+    console.log(clients);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ClientList
+        clients={clients}
+        setClients={setClients}
+        clientForm={clientForm}
+        setClientForm={setClientForm}
+        addClient={addClient}
+      />
+      <button onClick={checkClients}>Check</button>
     </div>
   );
 }
