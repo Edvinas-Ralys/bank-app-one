@@ -10,11 +10,13 @@ function App() {
   const [clientForm, setClientForm] = useState(false);
   const addClient = () => {
     setClientForm(!clientForm);
+
   };
 
   const [clients, setClients] = useState([]);
   const checkClients = () => {
     console.log(clients);
+
   };
   return (
     <div className="App">

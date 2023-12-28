@@ -13,7 +13,7 @@ function ClientList({
         <ul>
           {clients.map((client, index) => (
             <li key={index}>
-              {client.name} {client.lastName}
+              {client.name} {client.lastName} {client.accountNumb}
             </li>
           ))}
         </ul>

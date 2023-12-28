@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
+import acountNumbGen from "../functions/acountNumbGen";
 
 function ClientForm({ setClients, setClientForm, clientForm, clients }) {
-
-  const handleAddClient = () => {
-    const newClient = { name: clientName, lastName: clientLastName };
-
-    setClients((c) => [...c, newClient]);
-    setClientForm(!clientForm)
-  };
-
-
-
-
   const [clientName, setClientName] = useState(``);
   const [clientLastName, setClientlastName] = useState(``);
 
@@ -24,10 +14,24 @@ function ClientForm({ setClients, setClientForm, clientForm, clients }) {
     setClientlastName(e.target.value);
   };
 
-
   const cancelForm = () => {
     setClientForm(!clientForm);
   };
+
+  const handleAddClient = () => {
+    let clientsList = JSON.parse(localStorage.getItem(`clientsList`) || "[]");
+    const newClient = {
+      name: clientName,
+      lastName: clientLastName,
+      accountNumb: acountNumbGen(),
+    };
+    clientsList.push(newClient);
+    localStorage.setItem(`clientsList`, JSON.stringify(clientsList));
+
+    setClients((c) => [...c, newClient]);
+    setClientForm(!clientForm);
+  };
+
   return (
     <div>
       <div className="client-form">
@@ -53,7 +57,9 @@ function ClientForm({ setClients, setClientForm, clientForm, clients }) {
       <button onClick={handleAddClient} className="save-button">
         Save
       </button>
-      <button onClick={cancelForm} className="save-button">Cancel</button>
+      <button onClick={cancelForm} className="save-button">
+        Cancel
+      </button>
     </div>
   );
 }
