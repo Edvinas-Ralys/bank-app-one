@@ -16,6 +16,7 @@ function App() {
   const [clients, setClients] = useState([]);
   const checkClients = () => {
     console.log(clients);
+    console.log(JSON.parse(localStorage.getItem(`clientsList`)))
 
   };
   return (

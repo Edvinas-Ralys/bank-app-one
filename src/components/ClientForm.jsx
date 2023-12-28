@@ -24,6 +24,7 @@ function ClientForm({ setClients, setClientForm, clientForm, clients }) {
       name: clientName,
       lastName: clientLastName,
       accountNumb: acountNumbGen(),
+      balance: 0,
     };
     clientsList.push(newClient);
     localStorage.setItem(`clientsList`, JSON.stringify(clientsList));

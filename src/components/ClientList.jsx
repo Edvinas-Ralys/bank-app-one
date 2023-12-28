@@ -7,19 +7,32 @@ function ClientList({
   setClientForm,
   addClient,
 }) {
+
+let clientsInStorage = JSON.parse(localStorage.getItem(`clientsList`))
+
   return (
     <>
       <div>
         <ul>
-          {clients.map((client, index) => (
-            <li key={index}>
-              {client.name} {client.lastName} {client.accountNumb}
-            </li>
-          ))}
+          {clientsInStorage !== null
+            ? clientsInStorage.map(
+                (client, index) => (
+                  <li key={index}>
+                    <div className="client">
+                        <p className="name">
+                          {client.name} {client.lastName}
+                        </p>
+                        <p className="account">Sąskaita: {client.accountNumb}</p>
+                        <p className="balance">Likutis: {client.balance} €</p>
+                    </div>
+                  </li>
+                )
+              )
+            : null}
         </ul>
         {clientForm ? (
           <ClientForm
-          clients={clients}
+            clients={clients}
             setClients={setClients}
             setClientForm={setClientForm}
             clientForm={clientForm}
