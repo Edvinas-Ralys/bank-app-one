@@ -33,9 +33,6 @@ p {
       transform: scale(1.07);
       background-color: $secondary;
     }
-    & > .logo {
-      border-bottom: 3px solid $secondary;
-    }
     & > * {
       display: flex;
       flex-direction: column;
@@ -143,4 +140,11 @@ p {
   li {
     list-style: none;
   }
+}
+
+
+.modal{
+  position: absolute;
+  display: block;
+  background-color: gray;
 }

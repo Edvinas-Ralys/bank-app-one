@@ -32,3 +32,9 @@ export function lsStore(key, data) {
 export function lsRead(key){
     return get(key)
 }
+
+export function lsDestroy(key, id){
+  const oldData = get(key)
+  const dataToStore = oldData.filter(item => item.id !== id)
+  set(key, dataToStore)
+}

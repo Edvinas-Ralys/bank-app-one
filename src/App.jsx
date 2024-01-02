@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import Create from "./components/Create";
 import "./style/App.scss";
 import "./style/button.scss";
-import { lsStore, lsRead } from "./components/lsManager";
+import { lsStore, lsRead, lsDestroy } from "./components/lsManager";
 import Read from "./components/Read";
 import History from "./components/History";
 import NavBarLeft from "./components/NavBarLeft";
+import Delete from "./components/Delete";
 
 
 
@@ -19,11 +20,16 @@ function App() {
   // Array of objects, that send info to LS and are displayed
   const [clients, setClients] = useState([]);
 
+  const [deleteData, setDeleteData] = useState(null)
+
   // Creates array of client objects on page load
   //If useEffect array is empty it only fires once when page is loaded
   useEffect((_) => {
     setClients(lsRead(KEY));
   }, []);
+
+
+
 
 
 
@@ -50,8 +56,8 @@ function App() {
       <div className="create-client">
       <Create setCreateClient={setCreateClient} createClient={createClient} />
       <Read clients={clients} />
-
       </div>
+      <Delete />
 
     </div>
   );
