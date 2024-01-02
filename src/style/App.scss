@@ -1,0 +1,128 @@
+// @use 'scss-reset/reset';
+
+$text: #0a121b;
+$background: #f9fbfd;
+$primary: #3778cc;
+$secondary: #82aee5;
+$accent: #5292e4;
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400");
+
+body {
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins";
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%;
+} /* 16px */
+
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
+}
+
+.main-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr, 1fr;
+  .client-display {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    li {
+      list-style: none;
+      .client-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: $secondary;
+        padding-left: 30px;
+        padding-right: 30px;
+        transition: 0.2s ease-in-out;
+        border-radius: 10px;
+        gap: 20px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        .client {
+          display: flex;
+          justify-content: space-between;
+          width: 600px;
+          .client-basic {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        .client-information {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: 20px;
+          .client-name {
+            font-size: 40px;
+            user-select: none;
+          }
+        }
+        .account-balance {
+          font-size: 40px;
+          user-select: none;
+        }
+      }
+    }
+  }
+}
+
+.manage-account {
+  display: flex;
+  justify-content: space-between;
+  .manage-account-button,
+  .delete-account {
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-self: flex-end;
+  }
+}
+.delete-account {
+  opacity: 0.3;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 1;
+    transition: 0.2s ease-in-out;
+    background-color: #c940409f;
+    color: black;
+    border: 2px solid #4e1f1f;
+  }
+}
