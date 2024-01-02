@@ -9,14 +9,17 @@ function Create({setCreateClient, createClient}) {
 
     // Adding clients as and object. Ready to be transfered to LS
     const addClient = _ =>{
-        setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0})
-        setName(``)
-        setLastName(``)
+        if(name !== `` && lastName !== ``){
+            setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0})
+            setName(``)
+            setLastName(``)
+        }
     }
 
   return(
     //Creating interface for user input
-    <div className="create-client">
+    <div className="client-creation">
+        <h2>Pridėti sąskaitą</h2>
         <div className="client-info">
             <div className="client-name">
                 <label htmlFor="name">Vardas:</label>

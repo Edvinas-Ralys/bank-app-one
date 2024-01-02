@@ -5,6 +5,9 @@ import "./style/button.scss";
 import { lsStore, lsRead } from "./components/lsManager";
 import Read from "./components/Read";
 import History from "./components/History";
+import NavBarLeft from "./components/NavBarLeft";
+
+
 
 function App() {
   //Key for array of client objects
@@ -43,9 +46,13 @@ function App() {
 
   return (
     <div className="main-page">
+      <NavBarLeft />
+      <div className="create-client">
       <Create setCreateClient={setCreateClient} createClient={createClient} />
-      <History />
       <Read clients={clients} />
+
+      </div>
+
     </div>
   );
 }
