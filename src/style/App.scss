@@ -19,7 +19,7 @@ p {
 
 .main-page {
   display: grid;
-  grid-template-columns: minmax(150px, 200px) 1fr 0.4fr;
+  grid-template-columns: minmax(150px, 200px) minmax(350px, 750px) minmax(400px, 700px);
   height: 100vh;
   overflow: hidden;
   gap: 50px;
@@ -127,6 +127,7 @@ p {
       .client-information {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         .client-name {
           font-size: 35px;
         }
@@ -146,5 +147,86 @@ p {
 .modal {
   display: block;
   background-color: rgba(128, 128, 128, 0.459);
-  position: absolute;
+  position:absolute;
+  .close-modal{
+    padding: 0;
+    margin:0;
+    height: fit-content;
+
+  }
+  .button-modal{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: fit-content;
+  }
+}
+
+.edit-field{
+  height: 100vh;
+  // border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .main-field{
+    width: 90%;
+    height: 85%;
+    background-color: $background;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 20px;
+    .name-section{
+      font-size: 45px;
+    }
+    .add-funds{
+      font-size: 35px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      input{
+        height: 50px;
+        text-align: center;
+        font-size: 35px;
+        width: 90%;
+      }
+      .fund-buttons{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        .add{
+          background-color: rgba(0, 128, 0, 0.233);
+          color: black;
+          border: none;
+          height: 35px;
+          font-weight: 700;
+        }
+        .remove{
+          background-color: rgba(128, 0, 0, 0.233);
+          color: black;
+          border: none;
+          height: 35px;
+          font-weight: 700;
+        }
+      }
+    }
+    .save-edit{
+      margin-top: 30px;
+      font-size: 30px;
+    }
+  }
+}
+.inactive{
+  // color: rgba(128, 128, 128, 0.459);
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+  button{
+    cursor:default;
+    user-select: none;
+  }
 }

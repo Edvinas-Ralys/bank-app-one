@@ -1,5 +1,6 @@
 import { useState } from "react";
 import acountNumbGen from "../functions/acountNumbGen"
+import currentDate from "../functions/currentDate";
 
 function Create({setCreateClient, createClient}) {
 
@@ -10,7 +11,7 @@ function Create({setCreateClient, createClient}) {
     // Adding clients as and object. Ready to be transfered to LS
     const addClient = _ =>{
         if(name !== `` && lastName !== ``){
-            setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0})
+            setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0, created:currentDate(), history:[]})
             setName(``)
             setLastName(``)
         }
