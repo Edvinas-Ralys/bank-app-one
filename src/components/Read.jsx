@@ -1,6 +1,6 @@
 //Displaying list of clients
 import Show from "./Show";
-function Read({ clients }) {
+function Read({ clients, setDeleteData, deleteData }) {
   return (
     <ul className="client-display">
       {clients
@@ -11,7 +11,7 @@ function Read({ clients }) {
         .map((client) => (
           <li key={client.id}>
             {" "}
-            <Show client={client} />
+            <Show client={client} setDeleteData={setDeleteData} deleteData={deleteData} />
           </li>
         ))}
     </ul>

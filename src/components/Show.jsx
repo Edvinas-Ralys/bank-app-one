@@ -1,11 +1,18 @@
 import { useState } from "react";
 
 //Dispalys single client
-function Show({ client }) {
+function Show({ client, setDeleteData, deleteData }) {
   const [showEdit, setShowEdit] = useState(false);
   const clientEdid = (_) => {
     setShowEdit(!showEdit);
   };
+
+  const handleCancel = _ =>{
+    setDeleteData(!deleteData)
+    console.log(`Hello, world`)
+    console.log(deleteData)
+
+  }
 
   return (
     <div onClick={clientEdid} className="client-card">
@@ -22,7 +29,7 @@ function Show({ client }) {
       </div>
       <div className="manage-account">
         <button className="manage-account-button">Valdyti lėšas</button>
-        <button className="delete-account">Pašalinti sąskaitą</button>
+        <button onClick={handleCancel} className="delete-account">Pašalinti sąskaitą</button>
       </div>
     </div>
   );

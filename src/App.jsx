@@ -20,13 +20,14 @@ function App() {
   // Array of objects, that send info to LS and are displayed
   const [clients, setClients] = useState([]);
 
-  const [deleteData, setDeleteData] = useState(null)
+  const [deleteData, setDeleteData] = useState(false)
 
   // Creates array of client objects on page load
   //If useEffect array is empty it only fires once when page is loaded
   useEffect((_) => {
     setClients(lsRead(KEY));
   }, []);
+
 
 
 
@@ -55,9 +56,9 @@ function App() {
       <NavBarLeft />
       <div className="create-client">
       <Create setCreateClient={setCreateClient} createClient={createClient} />
-      <Read clients={clients} />
+      <Read clients={clients} deleteData={deleteData} setDeleteData={setDeleteData} />
       </div>
-      <Delete />
+      <Delete deleteData={deleteData} setDeleteData={setDeleteData}/>
 
     </div>
   );
