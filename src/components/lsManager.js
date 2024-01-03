@@ -33,8 +33,16 @@ export function lsRead(key){
     return get(key)
 }
 
-export function lsDestroy(key, id){
-  const oldData = get(key)
-  const dataToStore = oldData.filter(item => item.id !== id)
-  set(key, dataToStore)
+export function lsDestroy(key, id) {
+  const oldData = get(key);
+  const dataToStore = oldData.filter((item) => item.id !== id);
+  set(key, dataToStore);
+}
+
+export function lsUpdate(key, data, id) {
+  const oldData = get(key);
+  const dataToStore = oldData.map((item) =>
+    item.id === id ? { ...item, ...data, id } : item
+  );
+  set(key, dataToStore);
 }

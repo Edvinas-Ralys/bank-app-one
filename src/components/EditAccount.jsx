@@ -1,11 +1,31 @@
-function EditAccount({editData, setEditData}) {
+import { useEffect, useState } from "react";
+
+function EditAccount({editData, setEditData, setUpdateData}) {
+
+    const [balance, setBalance] = useState(0)
+
+
+    const addFunds = _ =>{
+        setBalance(prevBalance => prevBalance += balance)
+    }
+    const removeFunds = _ =>{
+        setBalance(prevBalance => prevBalance -= balance)
+    }
+
+    // useEffect(_=>{
+    //     if(null === editData){
+    //         return null
+    //     }
+    //     setUpdateData({...editData, balance})
+
+    // }, [balance])
 
     if(null === editData){
         return (
             <div className="edit-field">
               <div className="main-field inactive">
                 <div className="name-section inactive">
-                  <p>Vardas, Pavardė</p>
+                  <p>Pavardė, Vardas</p>
                 </div>
                 <div className="balance-section inactive">
                   <p>Likutis:</p>
@@ -16,7 +36,7 @@ function EditAccount({editData, setEditData}) {
                 <div className="created-date inactive">Sukurta:</div>
             <div className="add-funds inactive">
                 <label htmlFor="">Tvarkyti lėšas</label>
-                <input type="number" name="" id="" />
+                <input type="number" name="" id="" value={``} />
                 <div className="fund-buttons inactive">
                     <button className="add">Pridėti lėšų</button>
                     <button className="remove">Išimti lėšų</button>
@@ -50,10 +70,10 @@ function EditAccount({editData, setEditData}) {
                 <div className="created-date">Sukurta: {editData.created}</div>
             <div className="add-funds">
                 <label htmlFor="">Tvarkyti lėšas</label>
-                <input type="number" name="" id="" />
+                <input type="number" name="" id="" value={balance} onChange={e => setBalance(e.target.value)}/>
                 <div className="fund-buttons">
-                    <button className="add">Pridėti lėšų</button>
-                    <button className="remove">Išimti lėšų</button>
+                    <button onClick={addFunds} className="add">Pridėti lėšų</button>
+                    <button onClick={removeFunds} className="remove">Išimti lėšų</button>
                 </div>
             </div>
             <button onClick={_=>setEditData(null)} className="save-edit">Išsaugoti</button>

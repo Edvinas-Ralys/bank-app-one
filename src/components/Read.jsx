@@ -1,6 +1,6 @@
 //Displaying list of clients
 import Show from "./Show";
-function Read({ clients, setDeleteData, deleteData, editData, setEditData }) {
+function Read({ clients, setDeleteData, editData, setEditData }) {
   return (
     <ul className="client-display">
       {clients
@@ -15,6 +15,7 @@ function Read({ clients, setDeleteData, deleteData, editData, setEditData }) {
               client={client}
               setDeleteData={setDeleteData}
               setEditData={setEditData}
+              editData={editData}
             />
           </li>
         ))}
