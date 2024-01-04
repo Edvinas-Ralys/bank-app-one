@@ -54,7 +54,7 @@ function EditAccount({ editData, setEditData, setUpdateData, setEditedBalance })
     );
   } else {
     return (
-      <div className="edit-field">
+      <div className={`edit-field ${editData !== null ? `edit-field-active` : null}`}>
         <div className="main-field">
           <div className="name-section">
             <p>

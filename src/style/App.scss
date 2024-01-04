@@ -62,7 +62,7 @@ p {
   overflow: hidden;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-start;
+  align-items: center;
   padding-top: 30px;
 
   .client-creation{
@@ -93,14 +93,13 @@ p {
     & > * {
       display: flex;
       justify-content: space-around;
-      gap: 10px;
       font-size: 17px;
     }
   }
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0px;
 }
 .client-display {
   width: 100%;
@@ -173,6 +172,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s ease-in-out;
   .main-field{
     width: 90%;
     height: 85%;
@@ -247,7 +247,6 @@ p {
 
 .message-cont{
   width: 300px;
-  // border: 2px solid black;
   position: absolute;
   right: 50px;
   bottom: 50px;
@@ -285,7 +284,93 @@ p {
 }
 
 
+@media only screen and (max-width: 1100px) {
+  .message-cont{
+    width: 300px;
+    position: absolute;
+    right: 20vw;
+    bottom: 10px;
+  }
+  .main-page{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding: 0;
+    gap: 10px;
+    align-items: center;
+    .create-client{
+      padding-top: 15px;
+    }
+    .edit-field{
+      position: absolute;
+      top:0;
+      height: 0px;
+      overflow: hidden;
+      opacity: 1.5;
+      transition: 0.3s ease-in-out;
+      .main-field{
+        height: 100vh;
+        border-radius: 0;
+        width: 100vw;
+      }
+    }
+    .edit-field-active{
+      transition: 0.3s ease-in-out;
+      height: 100vh;
+    }
+    .create-client{
+      width: 90%;
+    }
+  }
+  .navigation-bar{
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+    & > *{
+      font-size: 1rem;
+      text-align: center;
+      flex-grow: 1;
+      & > svg{
+        transition: 0.5s ease-in;
+        transform: scale(0.8);
+      }
+      &>.user>svg{
+        transition: 0.5s ease-in;
+        transform: scale(0.8);
+      }
+      &>.user-opt>.messages, .log-out{
+        transition: 0.5s ease-in;
+        transform: scale(0.8);
+      }
+    }
+  }
+
+}
 
 
+@media only screen and (max-width: 700px) {
+  .navigation-bar{
+    display: flex !important;
+    justify-content: space-between;
+    height: fit-content;
+    & > *{
+      flex-grow: 1;
+      p{
+        display: none;
+      }
+      & > svg{
+        transition: 0.5s ease-in;
+        transform: scale(0.5);
+      }
+      &>.user>svg{
+        transition: 0.5s ease-in;
+        transform: scale(0.8);
+      }
+      &>.user-opt>.messages, .log-out{
+        display: none;
+      }
+    }
+  }
+}
 
 
