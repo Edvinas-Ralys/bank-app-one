@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
-function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
+function EditAccount({ editData, setEditData, setUpdateData, setEditedBalance }) {
   const [amount, setAmount] = useState(``);
 
   const addFunds = (_) => {
     const currentBalance = editData.balance;
     const newBalance = Number(currentBalance) + Number(amount);
     setUpdateData({ ...editData, balance: newBalance });
+    setEditedBalance(`Lėšos pridėtos į sąskaitą`)
     setAmount(``);
   };
 
@@ -14,6 +15,7 @@ function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
     const currentBalance = editData.balance;
     const newBalance = Number(currentBalance) - Number(amount);
     setUpdateData({ ...editData, balance: newBalance });
+    setEditedBalance(`Lėšos išimtos iš sąskaitos`)
     setAmount(``);
   };
 
@@ -47,12 +49,6 @@ function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
             </div>
           </div>
           <button className="save-edit">Išsaugoti</button>
-          <div className="transaction-history">
-            <div className="history-name">
-              <p>Operacių istorija</p>
-            </div>
-            <div className="history-field"></div>
-          </div>
         </div>
       </div>
     );
@@ -66,12 +62,12 @@ function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
             </p>
           </div>
           <div className="balance-section">
-            <p>Likutis: {editData.balance}€</p>
+            <p>Likutis: <b>{editData.balance}€</b></p>
           </div>
           <div className="account-section">
-            <p>Sąskaitos numeris: {editData.accountNumber}</p>
+            <p>Sąskaitos numeris: <b>{editData.accountNumber}</b></p>
           </div>
-          <div className="created-date">Sukurta: {editData.created}</div>
+          <div className="created-date">Sukurta: <b>{editData.created}</b></div>
           <div className="add-funds">
             <label htmlFor="">Tvarkyti lėšas</label>
             <input
@@ -81,7 +77,7 @@ function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
-            <div className="fund-buttons">
+            <div className={`fund-buttons ${amount === `` ? `inactive` : null}`}>
               <button onClick={addFunds} className="add">
                 Pridėti lėšų
               </button>
@@ -93,12 +89,7 @@ function EditAccount({ editData, setEditData, setUpdateData, updateData }) {
           <button onClick={(_) => setEditData(null)} className="save-edit">
             Išsaugoti
           </button>
-          <div className="transaction-history">
-            <div className="history-name">
-              <p>Operacių istorija</p>
-            </div>
-            <div className="history-field"></div>
-          </div>
+
         </div>
       </div>
     );

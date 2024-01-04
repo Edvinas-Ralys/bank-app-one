@@ -8,6 +8,8 @@ import Read from "./components/Read";
 import NavBarLeft from "./components/NavBarLeft";
 import Delete from "./components/Delete";
 import EditAccount from "./components/EditAccount";
+import Messages from "./components/Messages";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   //Key for array of client objects
@@ -22,6 +24,16 @@ function App() {
   const [destroyData, setDestroyData] = useState([]);
   const [editData, setEditData] = useState(null);
   const [updateData, setUpdateData] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [editedBalance, setEditedBalance] = useState(``)
+
+  const dispalyMessage = (type, text) => {
+    const id = uuidv4();
+    setMessages((prevMsg) => [...prevMsg, { id, type, text }]);
+    setTimeout((_) => {
+      setMessages((prevMsg) => prevMsg.filter((m) => m.id !== id));
+    }, 3000);
+  };
 
   // Creates array of client objects on page load
   //If useEffect array is empty it only fires once when page is loaded
@@ -38,14 +50,18 @@ function App() {
       //lsStore return unique ID
       const id = lsStore(KEY, createClient);
       // Adding new client object to array of old client objects. Adding unique ID
+      dispalyMessage(`created`, `Sąskaita ${createClient.name} sukūrta`);
       setClients((prevClients) => [...prevClients, { ...createClient, id }]);
     },
     [createClient, setClients]
   );
 
+
+  //DESTROY
   useEffect(
     (_) => {
       lsDestroy(KEY, destroyData.id);
+      dispalyMessage(`deleted`, `Sąskaita ${destroyData.name} panaikinta`);
       setClients((prevClients) =>
         prevClients.filter((client) => client.id !== destroyData.id)
       );
@@ -62,8 +78,8 @@ function App() {
       }
       lsUpdate(KEY, updateData, updateData.id);
       setEditData({ ...editData, balance: updateData.balance });
-      console.log(`DATA UPDATE`)
-      console.log(updateData)
+      dispalyMessage(`created`, `${editedBalance} ${updateData.name}`);
+      setEditedBalance(``)
       setClients((prevClients) =>
         prevClients.map((item) =>
           item.id === updateData.id
@@ -79,7 +95,11 @@ function App() {
     <div className="main-page">
       <NavBarLeft />
       <div className="create-client">
-        <Create setCreateClient={setCreateClient} createClient={createClient} />
+        <Create
+          messages={messages}
+          setCreateClient={setCreateClient}
+          createClient={createClient}
+        />
         <Read
           clients={clients}
           deleteData={deleteData}
@@ -98,7 +118,9 @@ function App() {
         setEditData={setEditData}
         setUpdateData={setUpdateData}
         updateData={updateData}
+        setEditedBalance={setEditedBalance}
       />
+      <Messages messages={messages} />
     </div>
   );
 }

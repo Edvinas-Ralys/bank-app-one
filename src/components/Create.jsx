@@ -1,8 +1,9 @@
 import { useState } from "react";
 import acountNumbGen from "../functions/acountNumbGen"
 import currentDate from "../functions/currentDate";
+import Messages from "./Messages";
 
-function Create({setCreateClient, createClient}) {
+function Create({setCreateClient, messages}) {
 
     //using state to control inputs
     const [name, setName] = useState(``)
@@ -32,6 +33,7 @@ function Create({setCreateClient, createClient}) {
             </div>
         </div>
         <button onClick={addClient}>Pridėti sąskaitą</button>
+
     </div>
       )
  }

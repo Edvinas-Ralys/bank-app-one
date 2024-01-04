@@ -19,7 +19,7 @@ p {
 
 .main-page {
   display: grid;
-  grid-template-columns: minmax(150px, 200px) minmax(350px, 750px) minmax(400px, 700px);
+  grid-template-columns: minmax(150px, 200px) minmax(450px, 750px) minmax(400px, 700px);
   height: 100vh;
   overflow: hidden;
   gap: 50px;
@@ -66,6 +66,7 @@ p {
   padding-top: 30px;
 
   .client-creation{
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -133,7 +134,7 @@ p {
         }
       }
       .account-balance {
-        font-size: 55px;
+        font-size: 45px;
       }
     }
   }
@@ -234,4 +235,52 @@ p {
 
 .edit-active{
   background-color: rgba(76, 108, 214, 0.253) !important;
+  transition: 0.2s ease-in-out;
 }
+
+//Messages
+
+.message-cont{
+  width: 300px;
+  // border: 2px solid black;
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-end;
+  overflow: hidden;
+  .message-bin{
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    z-index: 10;
+    display: flex;
+    user-select: none;
+    pointer-events: none;
+  }
+  .created, .added-funds, .removed-funds{
+    background-color: rgba(0, 128, 0, 0.384);
+    border: 2px solid green;
+    transition: 0.3s ease-in-out;
+  }
+  .deleted{
+    background-color: rgba(255, 0, 0, 0.363);
+    border: 2px solid red;
+    transition: 0.3s ease-in-out;
+  }
+
+}
+
+
+
+
+
+
