@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
 
+
+
 function EditAccount({editData, setEditData, setUpdateData}) {
 
-    const [balance, setBalance] = useState(0)
+    const [amount, setAmount] = useState(``)
+
 
 
     const addFunds = _ =>{
-        setBalance(prevBalance => prevBalance += balance)
+
+      const currentBalance = editData.balance
+
+      const newBalance = Number(currentBalance) + Number(amount)
+      setEditData({...editData, balance:newBalance})
+      setUpdateData({...editData, balance:newBalance })
+      setAmount(``)
     }
+
     const removeFunds = _ =>{
-        setBalance(prevBalance => prevBalance -= balance)
+      const currentBalance = editData.balance
+      console.log(currentBalance)
     }
 
-    // useEffect(_=>{
-    //     if(null === editData){
-    //         return null
-    //     }
-    //     setUpdateData({...editData, balance})
-
-    // }, [balance])
 
     if(null === editData){
         return (
@@ -36,9 +40,9 @@ function EditAccount({editData, setEditData, setUpdateData}) {
                 <div className="created-date inactive">Sukurta:</div>
             <div className="add-funds inactive">
                 <label htmlFor="">Tvarkyti lėšas</label>
-                <input type="number" name="" id="" value={``} />
+                <input type="number" name="" id="" value={amount} onChange={e => setAmount(e.target.value)} />
                 <div className="fund-buttons inactive">
-                    <button className="add">Pridėti lėšų</button>
+                    <button  className="add">Pridėti lėšų</button>
                     <button className="remove">Išimti lėšų</button>
                 </div>
             </div>
@@ -70,7 +74,7 @@ function EditAccount({editData, setEditData, setUpdateData}) {
                 <div className="created-date">Sukurta: {editData.created}</div>
             <div className="add-funds">
                 <label htmlFor="">Tvarkyti lėšas</label>
-                <input type="number" name="" id="" value={balance} onChange={e => setBalance(e.target.value)}/>
+                <input type="number" name="" id="" value={amount} onChange={e => setAmount(e.target.value)}/>
                 <div className="fund-buttons">
                     <button onClick={addFunds} className="add">Pridėti lėšų</button>
                     <button onClick={removeFunds} className="remove">Išimti lėšų</button>
