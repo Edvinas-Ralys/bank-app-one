@@ -12,7 +12,7 @@ function Create({setCreateClient, messages}) {
     // Adding clients as and object. Ready to be transfered to LS
     const addClient = _ =>{
         if(name !== `` && lastName !== ``){
-            setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0, created:currentDate(), history:[]})
+            setCreateClient({name, lastName, accountNumber: acountNumbGen(), balance: 0, created:currentDate()})
             setName(``)
             setLastName(``)
         }
@@ -28,7 +28,7 @@ function Create({setCreateClient, messages}) {
                 <input type="text" id="name" value={name} onChange={e=>setName(e.target.value)} />
             </div>
             <div className="client-last-name">
-                <label htmlFor="last-name">Pavardė</label>
+                <label htmlFor="last-name">Pavardė:</label>
                 <input type="text" id="last-name" value={lastName} onChange={e=>setLastName(e.target.value)} />
             </div>
         </div>
