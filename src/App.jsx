@@ -61,6 +61,7 @@ function App() {
         return;
       }
       lsUpdate(KEY, updateData, updateData.id);
+      setEditData({ ...editData, balance: updateData.balance });
       console.log(`DATA UPDATE`)
       console.log(updateData)
       setClients((prevClients) =>
@@ -71,7 +72,7 @@ function App() {
         )
       );
     },
-    [updateData]
+    [updateData, setEditData, setClients]
   );
 
   return (
@@ -96,6 +97,7 @@ function App() {
         editData={editData}
         setEditData={setEditData}
         setUpdateData={setUpdateData}
+        updateData={updateData}
       />
     </div>
   );
